@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Impact Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<nav>
+    <div class="logo">AQI Impact</div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Global Stats</a></li>
+        <li><a href="#">About AQI</a></li>
+        <li><a href="analyzer.html">AI Assistant</a></li>
+    </ul>
+</nav>
+
+<section class="assistant">
+    <h1>AI Personal Impact Assistant</h1>
+    <p class="assistant-subtitle">
+        Describe your daily activities in your own words.
+    </p>
+
+    <div class="location-selector">
+        <h2>Check Live AQI by City</h2>
+        <p class="assistant-subtitle">
+            Select a state and city to see the latest AQI for that location.
+        </p>
+
+        <div class="location-row">
+            <select id="stateSelect"></select>
+            <select id="citySelect"></select>
+            <button class="analyze-btn" onclick="getAQIForSelectedCity()">Get AQI</button>
+        </div>
+
+        <div id="aqiResult" class="ai-output" style="display:none; margin-top:30px;">
+            <h2>Live AQI</h2>
+            <p id="aqiText"></p>
+        </div>
+    </div>
+
+    <textarea id="userInput" placeholder="Example: I drive 20 km daily using a petrol car, use AC for 5 hours, and cook with LPG."></textarea>
+
+    <button onclick="analyzeImpact()" class="analyze-btn">Analyze My Impact</button>
+
+    <div id="results" class="results" style="display:none;">
+        <div class="chart-container">
+            <canvas id="impactChart"></canvas>
+        </div>
+
+        <div class="ai-output">
+            <h2>AI Analysis</h2>
+            <p id="analysisText"></p>
+        </div>
+    </div>
+</section>
+
+<script src="analyzer.js"></script>
+</body>
+</html>
