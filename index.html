@@ -1,129 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <meta charset="UTF-8">
     <title>AQI Impact Analyzer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+    <!-- NAVIGATION -->
     <nav>
         <div class="logo">AQI Impact</div>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Global Stats</a></li>
-            <li><a href="#">About AQI</a></li>
-            <li><a href="#">AI Assistant</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#stats">Global Stats</a></li>
+            <li><a href="#about">About AQI</a></li>
+            <li><a href="analyzer.html">AQI by City</a></li>
+            <li><a href="calculator.html">Calculator</a></li>
+            <li><a href="pollution-report.html">Report Pollution</a></li>
+            <li><a href="pollution-map.html">Pollution Map</a></li>
         </ul>
     </nav>
 
+    <!-- HERO SECTION -->
     <section class="hero">
-        <h1>99% of the World Breathes Polluted Air</h1>
-        <p>Understand global air quality. Analyze your personal impact. Take action.</p>
-        <a href="#" class="cta-button">Analyze My Impact</a>
+        <div class="container">
+            <h1>99% of the World Breathes Polluted Air</h1>
+            <p>
+                Understand global air quality. Analyze your personal impact. Take action.
+            </p>
+            <a href="analyzer.html" class="primary-btn">
+                Check AQI by City
+            </a>
+        </div>
     </section>
 
-    <section class="info">
-        <h2>Why Air Quality Matters</h2>
-        <p>
-            Air pollution is one of the leading environmental risks to health worldwide.
-            Fine particulate matter (PM2.5) penetrates deep into the lungs and bloodstream,
-            causing respiratory and cardiovascular diseases.
-        </p>
+    <!-- ABOUT SECTION -->
+    <section class="info-section" id="about">
+        <div class="container">
+            <h2>Why Air Quality Matters</h2>
+            <p>
+                Air pollution is one of the leading environmental risks to health worldwide.
+                Fine particulate matter (PM2.5) penetrates deep into the lungs and bloodstream,
+                causing respiratory and cardiovascular diseases. Long-term exposure contributes
+                to millions of premature deaths every year.
+            </p>
+        </div>
     </section>
 
-    <section class="preview">
-        <h2>AI Personal Impact Assistant</h2>
-        <p>
-            Describe your daily fuel use, electricity consumption, and lifestyle.
-            Our AI-based analyzer estimates your pollution contribution and
-            provides actionable recommendations.
-        </p>
+    <!-- GLOBAL STATS -->
+    <section class="stats-section" id="stats">
+        <div class="container">
+            <h2>Global Air Quality Statistics</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>99%</h3>
+                    <p>Of the world’s population breathes air exceeding safe WHO limits.</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>6.7 Million</h3>
+                    <p>Deaths annually linked to air pollution exposure worldwide.</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>PM2.5</h3>
+                    <p>Fine particulate matter is the most dangerous air pollutant.</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>15% Cities</h3>
+                    <p>Only a small percentage of global cities meet safe air standards.</p>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <!-- REGION COMPARISON -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2>Average PM2.5 Levels by Region (µg/m³)</h2>
+            <p class="chart-subtitle">
+                Comparative air pollution levels across major global regions.
+            </p>
+
+            <div class="chart-card">
+                <canvas id="regionChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>
+                © 2026 AQI Impact Analyzer | Environmental Impact Analysis Project
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const ctx = document.getElementById('regionChart').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'South Asia',
+                    'East Asia',
+                    'Middle East',
+                    'Africa',
+                    'Europe',
+                    'North America',
+                    'Oceania'
+                ],
+                datasets: [{
+                    label: 'Average PM2.5 (µg/m³)',
+                    data: [65, 45, 50, 35, 15, 12, 8],
+                    backgroundColor: '#16a34a'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
 
 </body>
-<script>
-const ctx = document.getElementById('regionChart').getContext('2d');
-
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: [
-            'South Asia',
-            'East Asia',
-            'Middle East',
-            'Africa',
-            'Europe',
-            'North America',
-            'Oceania'
-        ],
-        datasets: [{
-            label: 'Average PM2.5 (µg/m³)',
-            data: [65, 45, 50, 35, 15, 12, 8],
-            backgroundColor: '#38bdf8'
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                labels: {
-                    color: '#ffffff'
-                }
-            }
-        },
-        scales: {
-            x: {
-                ticks: {
-                    color: '#ffffff'
-                }
-            },
-            y: {
-                ticks: {
-                    color: '#ffffff'
-                }
-            }
-        }
-    }
-});
-</script>
 </html>
-<section class="global-stats">
-    <h2>Global Air Quality Statistics</h2>
-
-    <div class="stats-container">
-
-        <div class="stat-card">
-            <h3>99%</h3>
-            <p>Of the world’s population breathes air exceeding safe WHO limits.</p>
-        </div>
-
-        <div class="stat-card">
-            <h3>6.7 Million</h3>
-            <p>Deaths annually linked to air pollution exposure worldwide.</p>
-        </div>
-
-        <div class="stat-card">
-            <h3>PM2.5</h3>
-            <p>Fine particulate matter is the most dangerous air pollutant.</p>
-        </div>
-
-        <div class="stat-card">
-            <h3>15% Cities</h3>
-            <p>Only a small percentage of global cities meet safe air standards.</p>
-        </div>
-
-    </div>
-</section>
-<section class="comparison">
-    <h2>Average PM2.5 Levels by Region (µg/m³)</h2>
-    <p class="chart-subtitle">
-        Comparative air pollution levels across major global regions.
-    </p>
-
-    <div class="chart-container">
-        <canvas id="regionChart"></canvas>
-    </div>
-</section>

@@ -1,56 +1,69 @@
+/* ===================================================
+   GLOBAL RESET
+=================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-    background-color: #0f172a;
-    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f9f6;
+    color: #1f2937;
     line-height: 1.6;
 }
 
-/* Navbar */
-
+/* ===================================================
+   NAVBAR
+=================================================== */
 nav {
+    background: white;
+    padding: 20px 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 60px;
-    background-color: #111827;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
 }
 
 .logo {
-    font-size: 22px;
-    font-weight: bold;
-    color: #38bdf8;
+    font-size: 24px;
+    font-weight: 700;
+    color: #16a34a;
 }
 
 nav ul {
-    list-style: none;
     display: flex;
+    list-style: none;
+    gap: 40px;
 }
 
-nav ul li {
-    margin-left: 30px;
-}
-
-nav ul li a {
+nav a {
     text-decoration: none;
-    color: #ffffff;
+    color: #374151;
+    font-weight: 500;
     transition: 0.3s;
 }
 
-nav ul li a:hover {
-    color: #38bdf8;
+nav a:hover {
+    color: #16a34a;
 }
 
-/* Hero Section */
+/* ===================================================
+   SHARED CONTAINER
+=================================================== */
+.container {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
 
+/* ===================================================
+   HERO SECTION (INDEX PAGE)
+=================================================== */
 .hero {
     text-align: center;
-    padding: 120px 20px;
+    padding: 120px 20px 100px;
 }
 
 .hero h1 {
@@ -60,184 +73,709 @@ nav ul li a:hover {
 
 .hero p {
     font-size: 18px;
+    color: #6b7280;
     margin-bottom: 30px;
-    color: #cbd5e1;
 }
 
-.cta-button {
-    padding: 12px 25px;
-    background-color: #38bdf8;
-    color: #0f172a;
+.primary-btn {
+    display: inline-block;
+    padding: 14px 30px;
+    background: #16a34a;
+    color: white;
+    border-radius: 14px;
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
+    font-weight: 600;
     transition: 0.3s;
 }
 
-.cta-button:hover {
-    background-color: #0ea5e9;
+.primary-btn:hover {
+    background: #15803d;
+    transform: translateY(-3px);
 }
 
-/* Info Section */
-
-.info, .preview {
+/* ===================================================
+   INFO SECTION
+=================================================== */
+.info-section {
     padding: 80px 20px;
     text-align: center;
 }
 
-.info h2, .preview h2 {
-    font-size: 32px;
+.info-section h2 {
+    font-size: 36px;
     margin-bottom: 20px;
 }
 
-.info p, .preview p {
-    max-width: 700px;
+.info-section p {
+    max-width: 800px;
     margin: auto;
-    color: #cbd5e1;
+    color: #6b7280;
 }
-/* Global Stats Section */
 
-.global-stats {
+/* ===================================================
+   STATS SECTION
+=================================================== */
+.stats-section {
     padding: 100px 20px;
-    background-color: #111827;
-    text-align: center;
+    background: white;
 }
 
-.global-stats h2 {
+.stats-section h2 {
+    text-align: center;
     font-size: 36px;
     margin-bottom: 60px;
 }
 
-.stats-container {
+.stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 30px;
-    max-width: 1100px;
-    margin: auto;
 }
 
 .stat-card {
-    background-color: #1f2937;
-    padding: 40px 20px;
-    border-radius: 12px;
+    background: #f9fafb;
+    padding: 35px;
+    border-radius: 18px;
+    text-align: center;
     transition: 0.3s;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 .stat-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
 }
 
 .stat-card h3 {
     font-size: 32px;
-    color: #38bdf8;
-    margin-bottom: 15px;
-}
-
-.stat-card p {
-    color: #cbd5e1;
-}
-/* Comparison Chart Section */
-
-.comparison {
-    padding: 100px 20px;
-    text-align: center;
-}
-
-.comparison h2 {
-    font-size: 34px;
+    color: #16a34a;
     margin-bottom: 10px;
 }
 
-.chart-subtitle {
-    color: #cbd5e1;
-    margin-bottom: 40px;
+.stat-card p {
+    color: #6b7280;
 }
 
-.chart-container {
-    max-width: 900px;
-    margin: auto;
-    background-color: #1f2937;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-/* AI Assistant Section */
-
-.assistant {
+/* ===================================================
+   CHART SECTION
+=================================================== */
+.comparison-section {
     padding: 100px 20px;
     text-align: center;
 }
 
-.assistant h1 {
-    font-size: 40px;
-    margin-bottom: 15px;
+.chart-subtitle {
+    color: #6b7280;
+    margin-bottom: 40px;
+}
+
+.chart-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    max-width: 900px;
+    margin: auto;
+}
+
+/* ===================================================
+   CALCULATOR PAGE
+=================================================== */
+.calculator {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.calculator h1 {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 10px;
 }
 
 .assistant-subtitle {
-    color: #cbd5e1;
-    margin-bottom: 30px;
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 60px;
 }
 
-textarea {
-    width: 90%;
-    max-width: 800px;
-    height: 150px;
-    padding: 20px;
-    border-radius: 10px;
-    border: none;
-    font-size: 16px;
-    background-color: #1f2937;
-    color: white;
+/* Form grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+.card h2 {
     margin-bottom: 20px;
+    color: #16a34a;
 }
 
+.card label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: 500;
+}
+
+.card input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    font-size: 15px;
+}
+
+/* Shared form controls (selects, etc.) */
+.control {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    font-size: 15px;
+    background: white;
+}
+
+.control:disabled {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.secondary-btn {
+    appearance: none;
+    border: 1px solid #d1d5db;
+    background: white;
+    color: #111827;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.secondary-btn:hover {
+    background: #f9fafb;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.page-header h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    font-size: 18px;
+    color: #6b7280;
+}
+
+.button-wrapper {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.helper {
+    margin-top: 14px;
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.muted {
+    color: #6b7280;
+}
+
+.error {
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.aqi-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.aqi-pill {
+    min-width: 92px;
+    text-align: center;
+    padding: 10px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: #f3f4f6;
+}
+
+.aqi-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 18px 0;
+}
+
+.pollutants {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.pollutant {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 12px 14px;
+}
+
+.pollutant-label {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.pollutant-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.pollutant-value .unit {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    margin-left: 4px;
+}
+
+/* AQI colors */
+.aqi-good { background: #dcfce7; color: #14532d; }
+.aqi-fair { background: #ecfccb; color: #365314; }
+.aqi-moderate { background: #ffedd5; color: #7c2d12; }
+.aqi-poor { background: #fee2e2; color: #7f1d1d; }
+.aqi-very-poor { background: #ffe4e6; color: #881337; }
+.aqi-unknown { background: #e5e7eb; color: #111827; }
+
+/* Button */
 .analyze-btn {
-    padding: 12px 30px;
-    background-color: #38bdf8;
+    display: block;
+    margin: 0 auto 60px;
+    background: #16a34a;
+    color: white;
+    padding: 15px 32px;
     border: none;
-    border-radius: 8px;
-    font-weight: bold;
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .analyze-btn:hover {
-    background-color: #0ea5e9;
+    background: #15803d;
+    transform: translateY(-3px);
 }
 
+/* ===================================================
+   RESULTS SECTION
+=================================================== */
 .results {
-    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 80px;
 }
 
-.ai-output {
-    margin-top: 40px;
-    background-color: #1f2937;
+.result-card {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.chart-container {
+    width: 100%;
+    height: 300px;
+}
+
+.ai-output h2 {
+    margin-bottom: 15px;
+    color: #16a34a;
+}
+
+.ai-output p {
+    color: #374151;
+    line-height: 1.8;
+}
+
+/* ===================================================
+   FOOTER
+=================================================== */
+footer {
+    background: white;
     padding: 30px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* ===================================================
+   RESPONSIVE
+=================================================== */
+@media (max-width: 900px) {
+    .results {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        padding: 20px;
+    }
+
+    .pollutants {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===================================================
+   POLLUTION REPORT FORM
+=================================================== */
+.report-form {
+    max-width: 760px;
+    margin: 0 auto 80px;
+}
+
+.report-textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.file-control {
+    padding: 8px;
+}
+
+.report-image-preview {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
     border-radius: 12px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    border: 1px solid #d1d5db;
+    margin-top: 10px;
 }
 
-.location-selector {
-    margin-top: 40px;
-    margin-bottom: 40px;
+.report-success {
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
 }
 
-.location-row {
+.report-submit {
+    margin-top: 4px;
+}
+
+/* ===================================================
+   POLLUTION MAP
+=================================================== */
+#pollutionMap {
+    width: 100%;
+    height: 560px;
+    border-radius: 18px;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+.map-status {
+    margin-bottom: 12px;
+}
+
+.map-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 22px;
+    align-items: start;
+}
+
+.map-list {
+    padding: 22px;
+    max-height: 560px;
+    overflow-y: auto;
+}
+
+.map-list h2 {
+    color: #16a34a;
+    margin-bottom: 4px;
+}
+
+.report-list {
+    list-style: none;
+    margin-top: 12px;
+}
+
+.report-list li {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #f9fafb;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+}
+
+.report-list-location {
+    font-weight: 600;
+    color: #111827;
+}
+
+.report-list-meta {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+.popup-wrap {
+    max-width: 260px;
+}
+
+.popup-meta {
+    color: #6b7280;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.popup-image {
+    width: 100%;
+    max-height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+@media (max-width: 1000px) {
+    .map-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .map-list {
+        max-height: 380px;
+    }
+}
+
+/* ===================================================
+   AQI HERO DASHBOARD
+=================================================== */
+.analyzer-controls {
+    margin-bottom: 20px;
+}
+
+.analyzer-control-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 20px;
+}
+
+.aqi-placeholder {
+    margin-bottom: 14px;
+}
+
+.aqi-hero-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.14) 0%, rgba(255, 255, 255, 0.7) 45%, rgba(220, 252, 231, 0.45) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 28px;
+    padding: 20px 22px;
+    color: #1f2937;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 22px 36px rgba(15, 23, 42, 0.14);
+    margin-bottom: 24px;
+}
+
+.aqi-hero-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.5), transparent 45%),
+                radial-gradient(circle at 88% 80%, rgba(22, 163, 74, 0.15), transparent 35%);
+    pointer-events: none;
+}
+
+.aqi-hero-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.aqi-live {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
 }
 
-.location-row select {
-    min-width: 180px;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    background-color: #1f2937;
-    color: #ffffff;
+.aqi-live-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #16a34a;
+}
+
+.aqi-main-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.aqi-main-value {
+    font-size: 62px;
+    line-height: 1;
+    font-weight: 800;
+    color: #14532d;
+}
+
+.aqi-main-unit {
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.aqi-health-row {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.aqi-status-text {
+    font-size: 34px;
+    line-height: 1.1;
+}
+
+.aqi-status-good { color: #bef264; }
+.aqi-status-fair { color: #a3e635; }
+.aqi-status-moderate { color: #fde047; }
+.aqi-status-poor { color: #fb923c; }
+.aqi-status-very-poor { color: #f87171; }
+.aqi-status-unknown { color: #fff; }
+
+.aqi-pm-row {
+    margin-top: 12px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-weight: 600;
+}
+
+.aqi-scale-wrap {
+    margin-top: 16px;
+}
+
+.aqi-scale-labels,
+.aqi-scale-values {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #4b5563;
+}
+
+.aqi-scale-bar {
+    position: relative;
+    margin: 8px 0;
+    height: 8px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #4ade80 0%, #facc15 35%, #f97316 60%, #ef4444 80%, #7e22ce 100%);
+}
+
+.aqi-scale-pointer {
+    position: absolute;
+    top: -5px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    background: rgba(22, 163, 74, 0.35);
+    transform: translateX(-50%);
+    left: 0;
+}
+
+.aqi-hero-weather {
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 20px;
+    padding: 14px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.aqi-weather-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.aqi-weather-icon {
+    width: 52px;
+    height: 52px;
+}
+
+.aqi-weather-temp {
+    font-size: 34px;
+    font-weight: 700;
+    color: #14532d;
+}
+
+.aqi-weather-label {
+    font-size: 16px;
+    color: #374151;
+}
+
+.aqi-weather-grid {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.aqi-weather-k {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+@media (max-width: 1000px) {
+    .analyzer-control-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .aqi-hero-card {
+        grid-template-columns: 1fr;
+    }
+
+    .aqi-weather-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }

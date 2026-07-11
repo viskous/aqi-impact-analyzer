@@ -2,63 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI Impact Assistant</title>
+    <title>AQI Analyzer (India)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
-<nav>
-    <div class="logo">AQI Impact</div>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">Global Stats</a></li>
-        <li><a href="#">About AQI</a></li>
-        <li><a href="analyzer.html">AI Assistant</a></li>
-    </ul>
-</nav>
+    <nav>
+        <div class="logo">AQI Impact</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#stats">Global Stats</a></li>
+            <li><a href="index.html#about">About AQI</a></li>
+            <li><a href="analyzer.html">AQI by City</a></li>
+            <li><a href="calculator.html">Calculator</a></li>
+            <li><a href="pollution-report.html">Report Pollution</a></li>
+            <li><a href="pollution-map.html">Pollution Map</a></li>
+        </ul>
+    </nav>
 
-<section class="assistant">
-    <h1>AI Personal Impact Assistant</h1>
-    <p class="assistant-subtitle">
-        Describe your daily activities in your own words.
-    </p>
+    <section class="calculator">
+        <div class="container">
 
-    <div class="location-selector">
-        <h2>Check Live AQI by City</h2>
-        <p class="assistant-subtitle">
-            Select a state and city to see the latest AQI for that location.
-        </p>
+            <div class="page-header">
+                <h1>AQI Analyzer (India)</h1>
+                <p>Select a state, then a city, and fetch live AQI from OpenWeather.</p>
+            </div>
 
-        <div class="location-row">
-            <select id="stateSelect"></select>
-            <select id="citySelect"></select>
-            <button class="analyze-btn" onclick="getAQIForSelectedCity()">Get AQI</button>
+            <div class="card analyzer-controls">
+                <h2>📍 Location & API</h2>
+                <div class="analyzer-control-grid">
+                    <div>
+                        <label for="apiKeyInput">OpenWeather API Key</label>
+                        <input id="apiKeyInput" class="control" type="password" placeholder="Paste your API key (stored only in this browser)">
+                        <div class="button-row">
+                            <button id="saveKeyBtn" class="secondary-btn" type="button">Save Key</button>
+                            <button id="clearKeyBtn" class="secondary-btn" type="button">Clear</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="stateSelect">State / UT</label>
+                        <select id="stateSelect" class="control"></select>
+                    </div>
+                    <div>
+                        <label for="citySelect">City</label>
+                        <select id="citySelect" class="control" disabled></select>
+                    </div>
+                </div>
+                <div class="helper">
+                    Uses OpenWeather Geocoding + Air Pollution + Weather APIs. Your key stays in this browser.
+                </div>
+            </div>
+
+            <div id="aqiPlaceholder" class="muted aqi-placeholder">
+                Choose a city and click “Show AQI”.
+            </div>
+            <div id="aqiError" class="error" style="display:none;"></div>
+
+            <div id="aqiResult" class="aqi-hero-card" style="display:none;">
+                <div class="aqi-hero-left">
+                    <div class="aqi-live"><span class="aqi-live-dot"></span> Live AQI</div>
+                    <div class="aqi-main-row">
+                        <div class="aqi-main-value" id="aqiValue">—</div>
+                        <div class="aqi-main-unit" id="aqiPill">AQI (IN)</div>
+                    </div>
+                    <div class="aqi-health-row">
+                        <span>Air Quality is</span>
+                        <strong id="aqiTitle">—</strong>
+                    </div>
+                    <div class="aqi-pm-row">
+                        <div>PM2.5: <strong id="pm25Value">—</strong> µg/m³</div>
+                        <div>PM10: <strong id="pm10Value">—</strong> µg/m³</div>
+                    </div>
+                    <div class="aqi-scale-wrap">
+                        <div class="aqi-scale-labels">
+                            <span>Good</span><span>Satisfactory</span><span>Moderate</span><span>Poor</span><span>Very Poor</span><span>Severe</span>
+                        </div>
+                        <div class="aqi-scale-bar">
+                            <div class="aqi-scale-pointer" id="aqiScalePointer"></div>
+                        </div>
+                        <div class="aqi-scale-values">
+                            <span>0</span><span>50</span><span>100</span><span>200</span><span>300</span><span>400+</span>
+                        </div>
+                    </div>
+                    <div class="muted" id="aqiMeta">—</div>
+                </div>
+                <div class="aqi-hero-weather">
+                    <div class="aqi-weather-main">
+                        <img id="weatherIcon" class="aqi-weather-icon" alt="Weather icon" style="display:none;">
+                        <div class="aqi-weather-temp"><span id="weatherTemp">—</span>°C</div>
+                        <div class="aqi-weather-label" id="weatherLabel">—</div>
+                    </div>
+                    <div class="aqi-weather-grid">
+                        <div>
+                            <div class="aqi-weather-k">Humidity</div>
+                            <div id="weatherHumidity">—</div>
+                        </div>
+                        <div>
+                            <div class="aqi-weather-k">Wind Speed</div>
+                            <div id="weatherWind">—</div>
+                        </div>
+                        <div>
+                            <div class="aqi-weather-k">Pressure</div>
+                            <div id="weatherPressure">—</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-wrapper">
+                <button id="fetchAqiBtn" class="analyze-btn" type="button" disabled>
+                    Show AQI
+                </button>
+            </div>
+
         </div>
+    </section>
 
-        <div id="aqiResult" class="ai-output" style="display:none; margin-top:30px;">
-            <h2>Live AQI</h2>
-            <p id="aqiText"></p>
+    <footer>
+        <div class="container" style="margin: 0 auto; padding: 0 20px;">
+            <p>© 2026 AQI Impact Analyzer</p>
         </div>
-    </div>
+    </footer>
 
-    <textarea id="userInput" placeholder="Example: I drive 20 km daily using a petrol car, use AC for 5 hours, and cook with LPG."></textarea>
+    <script src="aqi.js"></script>
 
-    <button onclick="analyzeImpact()" class="analyze-btn">Analyze My Impact</button>
-
-    <div id="results" class="results" style="display:none;">
-        <div class="chart-container">
-            <canvas id="impactChart"></canvas>
-        </div>
-
-        <div class="ai-output">
-            <h2>AI Analysis</h2>
-            <p id="analysisText"></p>
-        </div>
-    </div>
-</section>
-
-<script src="analyzer.js"></script>
 </body>
 </html>

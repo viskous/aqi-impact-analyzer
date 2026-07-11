@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pollution Report Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">AQI Impact</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#stats">Global Stats</a></li>
+            <li><a href="index.html#about">About AQI</a></li>
+            <li><a href="analyzer.html">AQI by City</a></li>
+            <li><a href="calculator.html">Calculator</a></li>
+            <li><a href="pollution-report.html">Report Pollution</a></li>
+            <li><a href="pollution-map.html">Pollution Map</a></li>
+        </ul>
+    </nav>
+
+    <section class="calculator">
+        <div class="container">
+            <div class="page-header">
+                <h1>Pollution Reporting Form</h1>
+                <p>Submit local pollution incidents to help create awareness and support cleaner communities.</p>
+            </div>
+
+            <form id="pollutionReportForm" class="card report-form" novalidate>
+                <label for="reportLocation">Location</label>
+                <input id="reportLocation" class="control" type="text" placeholder="Area, city, landmark" required>
+
+                <label for="pollutionType">Pollution Type</label>
+                <select id="pollutionType" class="control" required>
+                    <option value="">Select pollution type</option>
+                    <option value="Air Pollution">Air Pollution</option>
+                    <option value="Water Pollution">Water Pollution</option>
+                    <option value="Noise Pollution">Noise Pollution</option>
+                    <option value="Waste Dumping">Waste Dumping</option>
+                    <option value="Industrial Emissions">Industrial Emissions</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="reportDescription">Description</label>
+                <textarea id="reportDescription" class="control report-textarea" placeholder="What did you observe?" required></textarea>
+
+                <label for="reportImage">Image Evidence (Optional)</label>
+                <input id="reportImage" class="control file-control" type="file" accept="image/*">
+                <p class="helper">Accepted formats depend on your browser. Recommended size: under 5 MB.</p>
+
+                <img id="imagePreview" class="report-image-preview" alt="Selected evidence preview" style="display:none;">
+                <div id="reportError" class="error" style="display:none;"></div>
+                <div id="reportSuccess" class="report-success" style="display:none;"></div>
+
+                <div class="button-wrapper report-submit">
+                    <button type="submit" class="analyze-btn">Submit Report</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" style="margin: 0 auto; padding: 0 20px;">
+            <p>© 2026 AQI Impact Analyzer</p>
+        </div>
+    </footer>
+
+    <script src="js/site-config.js"></script>
+    <script src="js/pollution-api.js"></script>
+    <script src="pollution-report.js"></script>
+</body>
+</html>

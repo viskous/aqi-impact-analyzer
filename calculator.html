@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carbon Footprint Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">AQI Impact</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#stats">Global Stats</a></li>
+            <li><a href="index.html#about">About AQI</a></li>
+            <li><a href="analyzer.html">AQI by City</a></li>
+            <li><a href="calculator.html">Calculator</a></li>
+            <li><a href="pollution-report.html">Report Pollution</a></li>
+            <li><a href="pollution-map.html">Pollution Map</a></li>
+        </ul>
+    </nav>
+
+    <section class="calculator">
+        <div class="container">
+            <div class="page-header">
+                <h1>Carbon Footprint Calculator</h1>
+                <p>Calculate your annual carbon emissions and discover how to reduce your environmental impact.</p>
+            </div>
+
+            <div class="form-grid">
+                <div class="card">
+                    <h2>🚗 Transportation</h2>
+
+                    <label for="carKm">Car Travel (km/month)</label>
+                    <input type="number" id="carKm" value="0">
+
+                    <label for="publicKm">Public Transport (km/month)</label>
+                    <input type="number" id="publicKm" value="0">
+
+                    <label for="flightHours">Flight Hours (per year)</label>
+                    <input type="number" id="flightHours" value="0">
+                </div>
+
+                <div class="card">
+                    <h2>⚡ Electricity</h2>
+
+                    <label for="electricity">Electricity Usage (kWh/month)</label>
+                    <input type="number" id="electricity" value="0">
+                </div>
+
+                <div class="card">
+                    <h2>🍳 Cooking</h2>
+
+                    <label for="lpg">LPG Usage (cylinders/year)</label>
+                    <input type="number" id="lpg" value="0">
+                </div>
+            </div>
+
+            <div class="button-wrapper">
+                <button onclick="calculateImpact()" class="analyze-btn" type="button">
+                    Calculate My Impact
+                </button>
+            </div>
+
+            <div id="results" class="results" style="display:none;">
+                <div class="result-card">
+                    <canvas id="impactChart"></canvas>
+                </div>
+
+                <div class="result-card ai-output">
+                    <h2>Your Carbon Report</h2>
+                    <p id="analysisText"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" style="margin: 0 auto; padding: 0 20px;">
+            <p>© 2026 AQI Impact Analyzer</p>
+        </div>
+    </footer>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
+
